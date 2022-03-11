@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
@@ -7,10 +7,10 @@ import './App.css'
 // }
 
 function App() {
-  const [count, setCount] = useState(0) ;
+  const [count, setCount] = useState(0);
   const [color, setColor] = useState("blue");
-  const [myStatus,setMyStatus] = useState(false);
-  const [products, setProducts] = useState([{id:1,name: 'A'},{id:2,name: 'B'}]);
+  const [myStatus, setMyStatus] = useState(false);
+  const [products, setProducts] = useState([{ id: 1, name: 'A' }, { id: 2, name: 'B' }, { id: 3, name: 'C' }, { id: 4, name: 'D' }]);
   const changeCount = () => {
     setCount(1);
   }
@@ -26,13 +26,18 @@ function App() {
   }
   return (
     <div className="App">
-      Count: {count} <br/>
+      Count: {count} <br />
       <button onClick={changeCount}>ChangeCount</button>
-      Colors: <div style={{background: color,width:100,height:100}}>Color</div> <br/>
+      Colors: <div style={{ background: color, width: 100, height: 100 }}>Color</div> <br />
       <button onClick={changeColor}>Change Color</button>
-      Status : {myStatus ? "True" : "False"} <br/>
+      Status : {myStatus ? "True" : "False"} <br />
       <button onClick={changeStatus}>Change Status</button>
-      {myStatus && <div>Products: {products.map(item =><div>{item.name}<button onClick={() => removeItem(item.id)}>Delete</button></div> )}</div>}
+      {myStatus && <div>
+        Products: {products.map(item =>
+          <div>{item.name} - 
+            <button onClick={() => removeItem(item.id)}>Delete</button>
+          </div>)}
+      </div>}
     </div>
   )
 }
